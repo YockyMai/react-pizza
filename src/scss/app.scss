@@ -5,15 +5,15 @@
 @import 'components/all';
 
 body {
-  background-color: $background;
+  background-color: #efefef;
+
 }
 
 .wrapper {
   width: calc(100vw - 100px);
   height: 100%;
   background-color: #fff;
-  margin: 50px auto;
-  border-radius: 10px;
+  margin: 0 auto;
   max-width: 1400px;
 }
 
@@ -308,5 +308,33 @@ body {
       font-weight: 600;
       font-size: 18px;
     }
+  }
+}
+.header-container{
+  height: 100%;
+  padding-bottom: 120px;
+}
+.header{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  background-color: rgb(250, 250, 250);
+}
+.header__fixed{
+  position: fixed;
+  animation-name: show;
+  animation-duration: .5s;
+  z-index: 1;
+}
+@keyframes show {
+  0%{
+    opacity: 0;
+    top: -70px;
+  }
+  100%{
+    opacity: 1;
+    top: 0;
   }
 }
