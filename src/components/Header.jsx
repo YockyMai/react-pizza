@@ -4,7 +4,6 @@ import { Button } from "./";
 import Skeleton from "react-loading-skeleton";
 import classNames from "classnames";
 import {Link} from "react-router-dom";
-
 const Header = ({name, scrollActive}) => {
     return (
         <div className='header-container'>

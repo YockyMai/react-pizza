@@ -1,35 +1,73 @@
 import React, {useState} from 'react';
+import Swiper from 'swiper';
+
 
 const Categor = ({items}) => {
-    const [state, setState] = useState(null);
+    const [state, setState] = useState(true);
     const onSelectItem = (index) => {
         setState(index);
     }
     const nullSelectItems = () => {
-        setState(null);
+        setState(true);
     }
+
+    //Swiper
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+
+        loop: false,
+        spaceBetween: 10,
+        // And if we need scrollbar
+        centeredSlides: false,
+        centerInsufficientSlides: true,
+        breakpoints: {
+            // when window width is >= 480px
+            480: {
+                slidesPerView: "auto",
+
+            },
+            // when window width is >= 640px
+            931: {
+                slidesPerView: 2.5,
+            },
+            1049:{
+                slidesPerView: 3.5,
+            },
+            1266:{
+                slidesPerView: 4.5,
+            },
+            1485: {
+                slidesPerView: 5.5,
+            }
+        }
+    });
     return (
         <div className="categories">
             <ul>
                 <li onClick={() => nullSelectItems()}
-                    className={state === null ? 'active' : ''}
+                    className={state === true ? 'active' : ''}
                 >
                     Все
                 </li>
-                {items.map((name, index) => (
-                    <li className={state === index ? 'active' : ''}
-                        onClick={() => onSelectItem(index)}
-                        key={`${name}_${index}`}
-                    >
-                        {name}
-                    </li>
-                ))}
-
+                <div className="swiper">
+                    <div className="swiper-wrapper">
+                        {items.map((name, index) => (
+                            <div className="swiper-slide">
+                                <li className={state === index ? 'active' : ''}
+                                    onClick={() => onSelectItem(index)}
+                                    key={`${name}_${index}`}
+                                >
+                                    {name}
+                                </li>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </ul>
+
         </div>
     );
 };
-
 // class Categor extends React.Component {
 //     state = {
 //         activeItem: null,
