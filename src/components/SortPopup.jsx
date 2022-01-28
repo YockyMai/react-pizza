@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
+import {connect} from "react-redux";
+import store from "../redux/store";
+import {setSortBy} from "../redux/actions/filters";
 
-const SortPopup = ({items}) => {
+const SortPopup = ({items, sortBy, sortName}) => {
     //состояние
     const [visible, toggleVisible] = useState(false);
-    const [activeItem, setActiveItem] = useState(0);
 
     //переменные
-    let activeLabel = items[activeItem];
+    let activeLabel = sortName;
 
     //хуки
     const sortRef = React.useRef(null);
@@ -16,15 +18,14 @@ const SortPopup = ({items}) => {
         },
         []
     )
-
     //функции
     const onButtonClick = () => {
         toggleVisible(!visible);
 
     }
-    const handleChangeCategory = (index) => {
-        if (activeItem !== index){
-            setActiveItem(index);
+    const handleChangeCategory = (sort, name) => {
+        if (sortBy !== sort){
+            store.dispatch(setSortBy(sort, name))
             toggleVisible(!visible);
         }
     }
@@ -56,12 +57,12 @@ const SortPopup = ({items}) => {
             <div className="sort__popup">
                 <ul>
                     {
-                        items.map((items, index) =>
-                            <li key={`${items}_${index}`}
-                                className={activeItem === index ? 'active' : ''}
-                                onClick={() => {handleChangeCategory(index, items)}}
+                        items.map((obj, index) =>
+                            <li key={`${obj.name}_${index}`}
+                                className={sortBy === obj.sortBy ? 'active' : ''}
+                                onClick={() => {handleChangeCategory(obj.sortBy, obj.name)}}
                             >
-                                {items}
+                                {obj.name}
                             </li>
                         )
                     }
@@ -72,4 +73,13 @@ const SortPopup = ({items}) => {
     );
 };
 
-export default SortPopup;
+
+const mapStateToProps = (state) => {
+  return{
+      sortBy: state.filterReducer.sortBy,
+      index: state.filterReducer.index,
+      sortName: state.filterReducer.name
+  }
+}
+
+export default connect(mapStateToProps)(SortPopup);

@@ -15,15 +15,15 @@ const Home = ({items}) => {
                 />
 
                 <SortPopup items={[
-                    "Популярности",
-                    "Цене",
-                    "Алфавиту"
+                    {name : "Популярности", sortBy: 'popular'},
+                    {name : "Цене", sortBy: 'price'},
+                    {name : "Алфавиту", sortBy: 'alphabet'},
                 ]}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {items.map((obj, index) => (
-                    <PizzaElem key={obj.id} items = {obj}/>
+                {items.map((obj) => (
+                    <PizzaElem key={obj.name} {...obj}/>
                 ))}
 
             </div>

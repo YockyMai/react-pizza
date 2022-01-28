@@ -1,30 +1,60 @@
 import React from 'react';
+import classNames from "classnames";
+import PropTypes from 'prop-types';
+import {useDispatch} from "react-redux";
+import {setPizzasToCart} from "../redux/actions/cart";
 
+const PizzaElem = ({id ,name, imageUrl, sizes, types, price}) => {
+    let availableTypes = ['тонкое','традиционное'];
+    let availableSizes = [26,30,40];
+    let dispatch = useDispatch()
 
-const PizzaElem = ({items}) => {
+    function pizzasSet(indexPizza) {
+        dispatch(setPizzasToCart(indexPizza))
+    }
+
+    const [sizePizza , setSize] = React.useState(sizes[0]);
+    const [typePizza , setType] = React.useState(types[0]);
     return (
         <div>
 
             <div className="pizza-block">
                 <img
                     className="pizza-block__image"
-                    src={items.imageUrl}
+                    src={imageUrl}
                     alt="Pizza"
                 />
-                <h4 className="pizza-block__title">{items.name}</h4>
+                <h4 className="pizza-block__title">{name}</h4>
                 <div className="pizza-block__selector">
                     <ul>
-                        <li className="active">тонкое</li>
-                        <li>традиционное</li>
+                        {availableTypes.map((type, index) =>
+                            <li key={`${type}_${index}`}
+                                onClick={() => setType(index)}
+                                className={classNames({
+                                active: index === typePizza,
+                                disabled: !types.includes(index)
+                            })}
+                            >
+                                {type}
+                            </li>
+                        )}
                     </ul>
                     <ul>
-                        <li className="active">26 см.</li>
-                        <li>30 см.</li>
-                        <li>40 см.</li>
+                        {availableSizes.map((size,index) =>
+                            <li key={size}
+                                onClick={() => setSize(index)}
+                                className={classNames({
+                                    active: sizePizza === index,
+                                    disabled: !sizes.includes(size),
+                                })}
+                            >
+                                {size} см.
+                            </li>
+                        )}
                     </ul>
                 </div>
                 <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">от {items.price} ₽</div>
+                    <div className="pizza-block__price">от {price} ₽</div>
                     <div className="button button--outline button--add">
                         <svg
                             width="12"
@@ -38,7 +68,7 @@ const PizzaElem = ({items}) => {
                                 fill="white"
                             />
                         </svg>
-                        <span>Добавить</span>
+                        <span onClick={() => pizzasSet(id)}>Добавить</span>
                         <i>2</i>
                     </div>
                 </div>
@@ -46,5 +76,13 @@ const PizzaElem = ({items}) => {
         </div>
     );
 };
+
+PizzaElem.propTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+    types: PropTypes.arrayOf(PropTypes.number).isRequired,
+
+}
 
 export default PizzaElem;

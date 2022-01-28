@@ -11,7 +11,7 @@ const Button = (props) => {
                 'button--outline' : props.outline          //вторым параметром бинарное вырожение которые проверяет пропс и в зависимости устанваливает второй класс
             })}>
                 <span>520 ₽</span>
-                <div className="button__delimiter"></div>
+                <div className="button__delimiter"/>
                 <svg
                     width="18"
                     height="18"
