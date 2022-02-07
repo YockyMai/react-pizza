@@ -6,7 +6,7 @@ const setSortBy = (sortBy, nameSort) => ({
 
 const setCategory = (categoryIndex) => ({
     type: 'SET_CATEGORY_BY',
-    payload : categoryIndex
+    payload : categoryIndex,
 });
 
 

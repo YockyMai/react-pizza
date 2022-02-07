@@ -1,13 +1,14 @@
-export const setCartComponent = (index) => ({
-    type: 'SET_CART_COMPONENT',
-    payload : index,
+export const addPizzaCart = (pizzaObj) => ({
+    type: 'ADD_PIZZA_CART',
+    payload : pizzaObj,
 })
 
-export const setDeleteCart = () => ({
-    type: 'SET_DELETE_CART',
+export const setTotalPrice = (price) => ({
+    type: 'SET_TOTAL_PRICE',
+    payload : price
 })
 
-export const setPizzasToCart = (index) => ({
-    type: 'SET_PIZZAS_TO_CART',
-    index : index
+export const setTotalCount = (count) => ({
+    type: 'SET_TOTAL_COUNT',
+    payload : count
 })

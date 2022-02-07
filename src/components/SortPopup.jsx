@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import store from "../redux/store";
 import {setSortBy} from "../redux/actions/filters";
 
+
 const SortPopup = ({items, sortBy, sortName}) => {
     //состояние
     const [visible, toggleVisible] = useState(false);
@@ -18,22 +19,28 @@ const SortPopup = ({items, sortBy, sortName}) => {
         },
         []
     )
+
+
     //функции
     const onButtonClick = () => {
         toggleVisible(!visible);
 
     }
+
     const handleChangeCategory = (sort, name) => {
         if (sortBy !== sort){
             store.dispatch(setSortBy(sort, name))
             toggleVisible(!visible);
         }
     }
+
     const handleOutsideClick = (e) => {
         if(!e.path.includes(sortRef.current)){
             toggleVisible(false);
         }
     }
+
+
 
     return (
         <div className="sort" ref={sortRef}>
@@ -72,7 +79,6 @@ const SortPopup = ({items, sortBy, sortName}) => {
         </div>
     );
 };
-
 
 const mapStateToProps = (state) => {
   return{

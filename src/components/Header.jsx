@@ -4,7 +4,24 @@ import { Button } from "./";
 import Skeleton from "react-loading-skeleton";
 import classNames from "classnames";
 import {Link} from "react-router-dom";
-const Header = ({name, scrollActive}) => {
+import {useSelector} from "react-redux";
+const Header = ({name}) => {
+
+    const {totalPrice, totalCount} = useSelector(({cartReducer}) => ({
+        totalCount : cartReducer.totalCount,
+        totalPrice : cartReducer.totalPrice,
+    }))
+
+    const [scrollActive, handleScrollActive] = React.useState(false);
+    window.onscroll = function showHeader() {
+        if (window.pageYOffset > 230) {
+            handleScrollActive(true);
+        }
+        if (window.pageYOffset === 0) {
+            handleScrollActive(false);
+        }
+    }
+
     return (
         <div className='header-container'>
             <div className={classNames('header', {
@@ -22,7 +39,7 @@ const Header = ({name, scrollActive}) => {
                         </div>
                     </Link>
                     <div className="header__cart">
-                        <Button className="button--cart"/>
+                        <Button totalPrice={totalPrice} totalCount={totalCount} className="button--cart"/>
                     </div>
                 </div>
             </div>

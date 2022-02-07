@@ -1,23 +1,28 @@
 import React from 'react';
 import classNames from "classnames";
 import PropTypes from 'prop-types';
-import {useDispatch} from "react-redux";
-import {setPizzasToCart} from "../redux/actions/cart";
+import PizzaLoading from "./PizzaLoading";
 
-const PizzaElem = ({id ,name, imageUrl, sizes, types, price}) => {
+const Index = ({onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isLoading}) => {
     let availableTypes = ['тонкое','традиционное'];
     let availableSizes = [26,30,40];
-    let dispatch = useDispatch()
-
-    function pizzasSet(indexPizza) {
-        dispatch(setPizzasToCart(indexPizza))
-    }
 
     const [sizePizza , setSize] = React.useState(sizes[0]);
     const [typePizza , setType] = React.useState(types[0]);
+
+    const pizzaObj = {
+        id: id,
+        name: name,
+        imageUrl: imageUrl,
+        size : availableSizes[sizePizza],
+        type : availableTypes[typePizza],
+        price : price
+    }
+    if (isLoading){
+        return <PizzaLoading/>
+    }
     return (
         <div>
-
             <div className="pizza-block">
                 <img
                     className="pizza-block__image"
@@ -53,7 +58,7 @@ const PizzaElem = ({id ,name, imageUrl, sizes, types, price}) => {
                         )}
                     </ul>
                 </div>
-                <div className="pizza-block__bottom">
+                <div className="pizza-block__bottom" onClick={() => onClickPizzaToCart(pizzaObj)}>
                     <div className="pizza-block__price">от {price} ₽</div>
                     <div className="button button--outline button--add">
                         <svg
@@ -68,7 +73,7 @@ const PizzaElem = ({id ,name, imageUrl, sizes, types, price}) => {
                                 fill="white"
                             />
                         </svg>
-                        <span onClick={() => pizzasSet(id)}>Добавить</span>
+                        <span>Добавить</span>
                         <i>2</i>
                     </div>
                 </div>
@@ -77,12 +82,12 @@ const PizzaElem = ({id ,name, imageUrl, sizes, types, price}) => {
     );
 };
 
-PizzaElem.propTypes = {
+Index.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
-
+    onClickPizzaToCart : PropTypes.func.isRequired,
 }
 
-export default PizzaElem;
+export default Index;

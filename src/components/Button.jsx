@@ -10,7 +10,7 @@ const Button = (props) => {
                 className={classNames('button', props.className, { //функция classNames принимает первыми параметрами классы которые будут стоять по умолчянию
                 'button--outline' : props.outline          //вторым параметром бинарное вырожение которые проверяет пропс и в зависимости устанваливает второй класс
             })}>
-                <span>520 ₽</span>
+                <span>{props.totalCount} шт.</span>
                 <div className="button__delimiter"/>
                 <svg
                     width="18"
@@ -41,7 +41,7 @@ const Button = (props) => {
                         strokeLinejoin="round"
                     />
                 </svg>
-                <span>3</span>
+                <span>{props.totalPrice} р.</span>
                 {/*{props.children /*Берет значение из дочернего элемента*!/*/}
             </button>
         </Link>

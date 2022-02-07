@@ -1,17 +1,16 @@
 import React from 'react';
-import {connect} from "react-redux";
-import store from "../redux/store";
+import {connect, useDispatch} from "react-redux";
 import {setCategory} from "../redux/actions/filters";
 
 
 const Categor = ({items, indexCategory}) => {
+    let dispatch = useDispatch()
     const onSelectItem = (index) => {
-        store.dispatch(setCategory(index))
+        dispatch(setCategory(index))
     }
     const nullSelectItems = () => {
-        store.dispatch(setCategory(null))
+        dispatch(setCategory(null))
     }
-
     return (
         <div className="categories">
             <ul>
