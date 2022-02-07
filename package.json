@@ -2,6 +2,9 @@
   "name": "react-pizza",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.17.6"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
