@@ -6,7 +6,6 @@ import {Cart, Home} from "./pages";
 import {useSelector} from "react-redux";
 
 
-
 function App() {
     const pizzas = useSelector(state => state.pizzasReducer.items)
 

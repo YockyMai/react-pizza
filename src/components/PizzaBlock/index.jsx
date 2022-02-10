@@ -3,10 +3,9 @@ import classNames from "classnames";
 import PropTypes from 'prop-types';
 import PizzaLoading from "./PizzaLoading";
 
-const Index = ({onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isLoading}) => {
+const Index = ({addedCart ,onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isLoading}) => {
     let availableTypes = ['тонкое','традиционное'];
     let availableSizes = [26,30,40];
-
     const [sizePizza , setSize] = React.useState(sizes[0]);
     const [typePizza , setType] = React.useState(types[0]);
 
@@ -49,7 +48,7 @@ const Index = ({onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isL
                             <li key={size}
                                 onClick={() => setSize(index)}
                                 className={classNames({
-                                    active: sizePizza === index,
+                                    active: index === sizePizza,
                                     disabled: !sizes.includes(size),
                                 })}
                             >
@@ -74,7 +73,11 @@ const Index = ({onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isL
                             />
                         </svg>
                         <span>Добавить</span>
-                        <i>2</i>
+                        {addedCart ?
+                            <i>{addedCart}</i>
+                            :
+                            ''
+                        }
                     </div>
                 </div>
             </div>
@@ -88,6 +91,7 @@ Index.propTypes = {
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
     onClickPizzaToCart : PropTypes.func.isRequired,
+    addedCart: PropTypes.number
 }
 
 export default Index;

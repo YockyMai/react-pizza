@@ -1,6 +1,6 @@
 const initialState = {
     index : null,
-    sortBy: 'popular',
+    sortBy: 'rating',
     name: 'Популярности'
 }
 

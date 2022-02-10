@@ -13,5 +13,4 @@ let store = createStore(
 //Если не использовать планиг redux то можно обойдись таким кодом " const store = createStore(rootReducer, applyMiddleware(thunk)); "
 window.store = store
 
-store.subscribe(() => console.log(store.getState()))
 export default store;

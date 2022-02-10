@@ -4,11 +4,12 @@ import ContentLoader from "react-content-loader"
 const PizzaLoading = () => (
     <ContentLoader
         speed={0.7}
-        width={290}
+        width={300}
         height={460}
         viewBox="0 0 280 460"
         backgroundColor="#dedede"
         foregroundColor="#c9c9c9"
+        className="pizza-block-loader"
     >
         <circle cx="133" cy="147" r="119" />
         <rect x="38" y="290" rx="18" ry="18" width="197" height="33" />

@@ -7,24 +7,21 @@ import {setSortBy} from "../redux/actions/filters";
 const SortPopup = ({items, sortBy, sortName}) => {
     //состояние
     const [visible, toggleVisible] = useState(false);
-
     //переменные
     let activeLabel = sortName;
-
+    console.log(items)
     //хуки
     const sortRef = React.useRef(null);
     React.useEffect(
         () => {
             document.body.addEventListener('click', handleOutsideClick)
-        },
-        []
+        }, []
     )
 
 
     //функции
     const onButtonClick = () => {
         toggleVisible(!visible);
-
     }
 
     const handleChangeCategory = (sort, name) => {

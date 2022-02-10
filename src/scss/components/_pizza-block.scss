@@ -1,5 +1,9 @@
 @import '../variables';
 
+.pizza-block-loader{
+  margin-left: 30px;
+}
+
 .pizza-block {
   width: 280px;
   text-align: center;
@@ -15,8 +19,7 @@
 
   &__title {
     font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 3px;
+    font-weight: 800;
     margin-bottom: 20px;
   }
 
