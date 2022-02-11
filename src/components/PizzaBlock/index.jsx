@@ -6,9 +6,9 @@ import PizzaLoading from "./PizzaLoading";
 const Index = ({addedCart ,onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isLoading}) => {
     let availableTypes = ['тонкое','традиционное'];
     let availableSizes = [26,30,40];
-    const [sizePizza , setSize] = React.useState(sizes[0]);
+    const [sizePizza , setSize] = React.useState(0);
     const [typePizza , setType] = React.useState(types[0]);
-
+    console.log(sizePizza)
     const pizzaObj = {
         id: id,
         name: name,
