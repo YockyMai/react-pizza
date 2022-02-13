@@ -29,7 +29,6 @@ const CartPizzaElem = ({pizza}) => {
     const deleteCategoryPizza = (count, price, id) => {
         dispatch(deletePizzaFromCart(count, price, id))
     }
-    console.log(pizza[0].id)
     return (
         <div className="cart__item">
             <div className="cart__item-img">
