@@ -6,9 +6,8 @@ import PizzaLoading from "./PizzaLoading";
 const Index = ({addedCart ,onClickPizzaToCart ,name, imageUrl, sizes, types, price, id, isLoading}) => {
     let availableTypes = ['тонкое','традиционное'];
     let availableSizes = [26,30,40];
-    const [sizePizza , setSize] = React.useState(0);
+    const [sizePizza , setSize] = React.useState(sizes[0]);
     const [typePizza , setType] = React.useState(types[0]);
-    console.log(sizePizza)
     const pizzaObj = {
         id: id,
         name: name,
@@ -44,11 +43,11 @@ const Index = ({addedCart ,onClickPizzaToCart ,name, imageUrl, sizes, types, pri
                         )}
                     </ul>
                     <ul>
-                        {availableSizes.map((size,index) =>
+                        {availableSizes.map((size) =>
                             <li key={size}
-                                onClick={() => setSize(index)}
+                                onClick={() => setSize(size)}
                                 className={classNames({
-                                    active: index === sizePizza,
+                                    active: size === sizePizza,
                                     disabled: !sizes.includes(size),
                                 })}
                             >

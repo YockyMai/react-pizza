@@ -6,9 +6,9 @@ import PizzaLoading from "../components/PizzaBlock/PizzaLoading";
 import {addPizzaCart} from "../redux/actions/cart";
 
 const sortItems = [
-    {name : "Популярности", sortBy: 'rating'},
-    {name : "Цене", sortBy: 'price'},
-    {name : "Алфавиту", sortBy: 'name'},
+    {name: "Популярности", sortBy: 'rating'},
+    {name: "Цене", sortBy: 'price'},
+    {name: "Алфавиту", sortBy: 'name'},
 ]
 
 const Home = ({items}) => {
@@ -22,7 +22,7 @@ const Home = ({items}) => {
     }
     React.useEffect(() => {
         dispatch(fetchPizzas(sortBy, category))
-    }, [category,sortBy]);
+    }, [category, sortBy]);
     return (
         <div className="container">
             <div className="content__top">

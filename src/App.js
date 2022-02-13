@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 
 function App() {
     const pizzas = useSelector(state => state.pizzasReducer.items)
-
+    
     return (
         <div className="App">
             <div className="wrapper">

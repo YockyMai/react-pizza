@@ -9,7 +9,6 @@ const SortPopup = ({items, sortBy, sortName}) => {
     const [visible, toggleVisible] = useState(false);
     //переменные
     let activeLabel = sortName;
-    console.log(items)
     //хуки
     const sortRef = React.useRef(null);
     React.useEffect(
@@ -36,8 +35,6 @@ const SortPopup = ({items, sortBy, sortName}) => {
             toggleVisible(false);
         }
     }
-
-
 
     return (
         <div className="sort" ref={sortRef}>
