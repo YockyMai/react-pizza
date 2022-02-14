@@ -1,0 +1,83 @@
+@import '../variables';
+
+.footer-container{
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-active{
+    opacity: 1 !important;
+    bottom: 0 !important;
+    transition: .5s;
+}
+
+.footer {
+    height: 100px;
+    position: relative;
+    bottom: -100px;
+    transition: .5s;
+    opacity: 0;
+    .footer--flex{
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 100px;
+        padding-right: 100px;
+        align-items: center;
+        height: 100px;
+        .footer__company-name{
+            p{
+                text-align: left;
+            }
+            display: flex;
+            align-items: center;
+            img{
+                padding-left: 10px;
+                margin-bottom: 6px;
+            }
+        }
+        .footer__author{
+            *{
+                text-align: center;
+            }
+        }
+        .footer__link{
+            div{
+                display: flex;
+                width: 150px;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        img{
+            width: 40px;
+            opacity: .8;
+            transition: .3s;
+            &:hover{
+                opacity: 1;
+                transition: .3s;
+            }
+        }
+    }
+}
+.footer-open-btn{
+    transform: rotate(-90deg) translateY(-50%);
+    width: 40px;
+    cursor: pointer;
+    bottom: -16px;
+    left: 50%;
+    z-index: 10;
+    position: absolute;
+    transition: .5s;
+    opacity: 0.8;
+    &:hover{
+        opacity: 1;
+    }
+}
+.footer-open-btn--active{
+    bottom: 95px;
+    transition: .5s;
+}
+.footer-wrapper{
+    position: relative;
+}

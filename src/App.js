@@ -5,7 +5,6 @@ import {Route, Routes} from "react-router-dom";
 import {Cart, Home} from "./pages";
 import {useSelector} from "react-redux";
 
-
 function App() {
     const pizzas = useSelector(state => state.pizzasReducer.items)
     

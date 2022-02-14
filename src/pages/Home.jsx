@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchPizzas} from "../redux/actions/pizzas";
 import PizzaLoading from "../components/PizzaBlock/PizzaLoading";
 import {addPizzaCart} from "../redux/actions/cart";
+import Footer from "../components/Footer";
 
 const sortItems = [
     {name: "Популярности", sortBy: 'rating'},
@@ -49,6 +50,7 @@ const Home = ({items}) => {
                         Array(10).fill(<PizzaLoading key={Array.id}/>)
                 }
             </div>
+            <Footer/>
         </div>
     );
 };
